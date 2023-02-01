@@ -3,8 +3,6 @@ const bodyParser  = require('body-parser');
 const app = express()
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-
-
 require ('dotenv').config()
 const port = process.env.PORT||3005
 //Conexión a base de datos
@@ -33,8 +31,9 @@ app.set('view engine' ,'ejs')
 app.use(express.static(__dirname + '/public'));
 
 //Llamadas a las rutas:
-app.use('/', require('./router/rutas'));
+app.use('/entrenador', require('./router/entrenador'));
 app.use('/pokemon', require('./router/pokemon'));
+
 app.use((req,res) => {
     res.status(404).sendFile(__dirname + "/public/404.html")
    })
