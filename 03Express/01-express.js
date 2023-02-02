@@ -31,13 +31,16 @@ app.set('view engine' ,'ejs')
 app.use(express.static(__dirname + '/public'));
 
 //Llamadas a las rutas:
+
 app.use('/entrenador', require('./router/entrenador'));
 app.use('/pokemon', require('./router/pokemon'));
 
-app.use((req,res) => {
-    res.status(404).sendFile(__dirname + "/public/404.html")
-   })
-
+app.use((req, res, next) => {
+  res.status(404).render("404", {
+      titulo: "404",
+      descripcion: "Titulo del sitio web"
+  })
+})
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
