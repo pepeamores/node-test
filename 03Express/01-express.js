@@ -12,10 +12,6 @@ const mongoose = require('mongoose');
 //Lo correcto será declararlas EN VARIABLES DE ENTORNO
 //para que nadie vea directamente nuestras credenciales
 
-/*const user = 'cursonode';
-const password = 'h5iov5yzJermGENG';
-const dbname = 'dbpokemon';
-*/
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.wke4kik.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`; //URL de conexión, que completaremos luego
 mongoose.connect(uri,
   { useNewUrlParser: true, useUnifiedTopology: true }
@@ -35,7 +31,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/entrenador', require('./router/entrenador'));
 app.use('/pokemon', require('./router/pokemon'));
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).render("404", {
       titulo: "404",
       descripcion: "Titulo del sitio web"

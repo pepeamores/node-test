@@ -60,8 +60,6 @@ router.delete('/:id', async (req, res) => {
         //siguiente función para eliminar
         const entrenadorDB = await Entrenador.findByIdAndDelete({ _id: id });
         console.log(entrenadorDB)
-        // https://stackoverflow.com/questions/27202075/expressjs-res-redirect-not-working-as-expected
-        // res.redirect('/pokemon') //Esto daría un error, tal y como podemos ver arriba
         if (!entrenadorDB) {
             res.json({ 
                 estado: false,
