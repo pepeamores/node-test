@@ -48,7 +48,7 @@ router.get('/:id', async(req, res) => { //El id vendrá por el GET (barra de dir
         console.log('Se ha producido un error', error)
         res.render('detalleentrenador', { //Mostraremos el error en la vista "detalle"
             error: true,
-            mensaje: 'Pokemon no encontrado!'
+            mensaje: 'Entrenador no encontrado!'
         })
     }
 })
@@ -63,12 +63,12 @@ router.delete('/:id', async (req, res) => {
         if (!entrenadorDB) {
             res.json({ 
                 estado: false,
-                mensaje: 'No se puede eliminar el Pokémon.'
+                mensaje: 'No se puede eliminar el Entrenador.'
             })
         } else {
             res.json({
                 estado: true,
-                mensaje: 'Pokémon eliminado.'
+                mensaje: 'Entrenador eliminado.'
             })
         } 
     } catch (error) {
@@ -87,13 +87,13 @@ router.put('/:id', async (req, res) => {
         console.log(entrenadorDB)
         res.json({
             estado: true,
-            mensaje: 'Pokémon editado'
+            mensaje: 'Entrenador editado'
         })
     } catch (error) {
         console.log(error)
         res.json({
             estado: false,
-            mensaje: 'Problema al editar el Pokémon'
+            mensaje: 'Problema al editar el Entrenador'
         })
     }
 })
